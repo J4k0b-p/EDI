@@ -1,0 +1,21 @@
+body{
+    background-color: #404040 !important;
+    color: #B5C3CC !important;
+}
+
+tr:nth-child(2n+1) th{
+    background-color: #87989f !important;
+}
+
+th{
+    background-color: #B5C3CC !important;
+}
+
+thead tr:first-child th{
+    background-color: #5d5f69 !important;
+}
+
+canvas{
+    background-color: #B5C3CC !important;
+    border-radius: 20px;
+}
