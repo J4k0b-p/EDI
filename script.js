@@ -1114,16 +1114,27 @@ const xyValues = [
     {x: 150, y: 15}
 ];
 
+const data2 = {
+    labels: [
+        'Red',
+        'Blue',
+        'Yellow'
+    ],
+    datasets: [{
+        label: 'My First Dataset',
+        data: [300, 50, 100],
+        backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4
+    }]
+};
+
 new Chart("chart_1", {
-    type: "scatter",
-    data: {
-        datasets: [{
-            pointRadius: 4,
-            pointBackgroundColor: "rgba(0,0,255,1)",
-            data: xyValues
-        }]
-    },
-    options: {}
+    type: 'doughnut',
+    data: data2,
 });
 
 new Chart("chart_2", {
@@ -1131,7 +1142,7 @@ new Chart("chart_2", {
     data: {
         datasets: [{
             pointRadius: 4,
-            pointBackgroundColor: "rgba(0,0,255,1)",
+            pointBackgroundColor: "rgb(255,255,255)",
             data: xyValues
         }]
     },
@@ -1139,12 +1150,13 @@ new Chart("chart_2", {
 });
 let slide = 0;
 
-brands = ['Apple', 'Samsung', 'Motorola', 'Huawei', 'Xiaomi'];
+brands = ['Apple', 'Huawei', 'Motorola', 'Samsung', 'Xiaomi'];
+let counter = 0;
 
 for (let x = 0; x < 100; x++) {
     if (data[x].Brand == brands[slide]) {
-        $('#data').append('<tr>');
-        $('#data').append(
+        $('#data').append('<tr class="tr-'+counter+'"></tr>');
+        $('.tr-'+counter).append(
             '<td>' + x + '</td>' +
             '<td>' + data[x].Brand + '</td>' +
             '<td>' + data[x].Premiere + '</td>' +
@@ -1157,7 +1169,7 @@ for (let x = 0; x < 100; x++) {
             '<td>' + data[x].Camera + '</td>' +
             '<td>' + data[x].Waterproof + '</td>'
         );
-        $('#data').append('</tr>');
+        counter++;
     }
 }
 $('#carouselExample').on('slid.bs.carousel', function () {
@@ -1165,9 +1177,8 @@ $('#carouselExample').on('slid.bs.carousel', function () {
     $('#data').empty();
     for (let x = 0; x < 100; x++) {
         if (data[x].Brand == brands[slide]) {
-            $('#data').append('<tr>');
             $('#data').append(
-                '<td>' + x + '</td>' +
+                '<tr><td>' + x + '</td>' +
                 '<td>' + data[x].Brand + '</td>' +
                 '<td>' + data[x].Premiere + '</td>' +
                 '<td>' + data[x].Price + '</td>' +
@@ -1177,9 +1188,8 @@ $('#carouselExample').on('slid.bs.carousel', function () {
                 '<td>' + data[x].Storage + '</td>' +
                 '<td>' + data[x].Battery + '</td>' +
                 '<td>' + data[x].Camera + '</td>' +
-                '<td>' + data[x].Waterproof + '</td>'
+                '<td>' + data[x].Waterproof + '</td></tr>'
             );
         }
-        $('#data').append('</tr>');
     }
 });

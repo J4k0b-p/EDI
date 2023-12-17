@@ -3,19 +3,31 @@ body{
     color: #B5C3CC !important;
 }
 
-tr:nth-child(2n+1) th{
-    background-color: #87989f !important;
+tr:first-child th {
+    background-color: #353538 !important;
 }
 
-th{
-    background-color: #B5C3CC !important;
+tr:nth-child(2n+1) td{
+    background-color: #4d595d !important;
 }
 
-thead tr:first-child th{
-    background-color: #5d5f69 !important;
+td{
+    background-color: #3f4649 !important;
 }
 
 canvas{
-    background-color: #B5C3CC !important;
+    background-color: #5e6a6e !important;
     border-radius: 20px;
+}
+
+.logo-div{
+    background-color: #87989f;
+    height: 800px;
+    width: 600px;
+    border-radius: 20px;
+}
+
+.logo-img{
+    max-height: 100px;
+    max-width: 120px;
 }
