@@ -178,7 +178,7 @@ function setUpCharts() {
       plugins: {
         legend: {
           labels: {
-            color: "white",
+            color: "#B5C3CC",
             font: {
               size: 14
             }
@@ -195,7 +195,7 @@ function setUpCharts() {
       scales: {
         y: {
           ticks: {
-            color: "white",
+            color: "#B5C3CC",
             font: {
               size: 18,
             },
@@ -205,7 +205,7 @@ function setUpCharts() {
         },
         x: {
           ticks: {
-            color: "white",
+            color: "#B5C3CC",
             font: {
               size: 14
             },
@@ -217,7 +217,7 @@ function setUpCharts() {
       plugins: {
         legend: {
           labels: {
-            color: "white",
+            color: "#B5C3CC",
             font: {
               size: 14
             }
