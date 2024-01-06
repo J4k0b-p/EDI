@@ -21,13 +21,12 @@ let brands = ['Apple', 'Huawei', 'Motorola', 'Samsung', 'Xiaomi'];
 let counter = 0;
 
 function renderContent(data) {
-  sortRecords(data);
-  phonesTableSort(data);
+  generateRecords(data);
   setUpCharts(data);
   updateCharts(sortPhonesMpx());
 }
 
-function sortRecords(data) {
+function generateRecords(data) {
   for (let x = 0; x < 100; x++) {
     if (data[x].Brand == brands[slide]) {
       $('#data').append(
@@ -69,50 +68,6 @@ function sortRecords(data) {
   }
 }
 
-function phonesTableSort(data) {
-  for (let x = 0; x < 100; x++) {
-    if (data[x].Brand == brands[slide]) {
-      $('#data').append('<tr class="tr-' + counter + '"></tr>');
-      $('.tr-' + counter).append(
-        '<td>' +
-          x +
-          '</td>' +
-          '<td>' +
-          data[x].Brand +
-          '</td>' +
-          '<td>' +
-          data[x].Premiere +
-          '</td>' +
-          '<td>' +
-          data[x].Price +
-          '</td>' +
-          '<td>' +
-          data[x].Color +
-          '</td>' +
-          '<td>' +
-          data[x].Screen_size +
-          '</td>' +
-          '<td>' +
-          data[x].Ram +
-          '</td>' +
-          '<td>' +
-          data[x].Storage +
-          '</td>' +
-          '<td>' +
-          data[x].Battery +
-          '</td>' +
-          '<td>' +
-          data[x].Camera +
-          '</td>' +
-          '<td>' +
-          data[x].Waterproof +
-          '</td>'
-      );
-      counter++;
-    }
-  }
-}
-
 function sortPhonesMpx() {
   let amount12Mpix = 0;
   let amount24Mpix = 0;
@@ -147,7 +102,6 @@ function sortWaterproofPhones() {
       countsByYear[year] = (countsByYear[year] || 0) + 1;
     }
   }
-  //cos tu chyba nie dziala - do sprawdzenia
   return countsByYear;
 }
 
@@ -215,6 +169,23 @@ function setUpCharts() {
   myChart1 = new Chart('chart_1', {
     type: 'doughnut',
     data: myChart1Data,
+    options: {
+      scales: {
+        y: {
+            beginAtZero: true
+          }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: "white",
+            font: {
+              size: 14
+            }
+          }
+        }
+      },
+    },
   });
 
   myChart2 = new Chart('chart_2', {
@@ -223,8 +194,35 @@ function setUpCharts() {
     options: {
       scales: {
         y: {
-          beginAtZero: true,
+          ticks: {
+            color: "white",
+            font: {
+              size: 18,
+            },
+            stepSize: 1,
+            beginAtZero: true
+          }
         },
+        x: {
+          ticks: {
+            color: "white",
+            font: {
+              size: 14
+            },
+            stepSize: 1,
+            beginAtZero: true
+          }
+        },
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: "white",
+            font: {
+              size: 14
+            }
+          }
+        }
       },
     },
   });
@@ -238,6 +236,6 @@ function updateCharts(data) {
 $('#carouselExample').on('slid.bs.carousel', function () {
   slide = $('div.active').index();
   $('#data').empty();
-  sortRecords(carouselData);
+  generateRecords(carouselData);
   updateCharts(sortPhonesMpx());
 });
